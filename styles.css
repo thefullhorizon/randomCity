@@ -1,0 +1,137 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* 容器布局 */
+.container {
+    display: flex;
+    min-height: 100vh;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* 左侧展示区样式 */
+.display-area {
+    flex: 7;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.city-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.city-image {
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.city-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.city-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.select-btn {
+    padding: 12px 30px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.select-btn:hover {
+    background-color: #45a049;
+}
+
+/* 右侧列表区样式 */
+.city-list {
+    flex: 3;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.city-list h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.city-list ul {
+    list-style: none;
+    width: 80%;
+    text-align: center;
+}
+
+.city-list li {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    color: #666;
+    transition: background-color 0.3s;
+}
+
+.city-list li:hover {
+    background-color: #f8f8f8;
+}
+
+/* 动画类 */
+.rolling {
+    animation: roll 0.1s linear infinite;
+}
+
+@keyframes roll {
+    0% { transform: translateY(-10px); }
+    100% { transform: translateY(10px); }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .display-area, .city-list {
+        flex: none;
+        width: 100%;
+    }
+}
+
+/* 添加主标题样式 */
+.main-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 28px;
+} 
