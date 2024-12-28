@@ -170,3 +170,16 @@ document.addEventListener('DOMContentLoaded', () => {
 menuBtn.addEventListener('click', () => {
     cityList.classList.toggle('open');
 }); 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cityList = document.getElementById('cityList');
+
+    // 监听窗口大小变化，重置城市列表样式
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            // 如果是大屏幕，确保城市列表在右侧正常显示
+            cityList.classList.remove('open');
+            cityList.style.transform = ''; // 恢复默认样式
+        }
+    });
+});
