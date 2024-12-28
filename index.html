@@ -10,7 +10,11 @@
     <div class="container">
         <!-- 左侧展示区 -->
         <div class="display-area">
-            <h1 class="main-title">随机城市选择</h1>
+            <h1 class="main-title">
+                随机城市选择
+                <!-- 添加按钮 -->
+                <button class="menu-btn" id="menuBtn">城市列表</button>
+            </h1>
             <div class="city-display">
                 <div class="city-image">
                     <img src="images/default.jpg" alt="城市图片" id="cityImage">
@@ -18,10 +22,12 @@
                 <div class="city-name" id="cityName">点击开始选择</div>
                 <button class="select-btn" id="selectBtn">开始选择</button>
             </div>
+            <!-- 添加图标按钮 -->
+            <button class="menu-btn" id="menuBtn">☰</button>
         </div>
         
         <!-- 右侧列表区 -->
-        <div class="city-list">
+        <div class="city-list" id="cityList">
             <h2>候选城市</h2>
             <ul>
                 <li>北京</li>

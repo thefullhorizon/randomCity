@@ -52,10 +52,12 @@ const defaultCity = {
     image: 'images/default.jpg'
 };
 
-// DOM 元素，移除不需要的元素引用
+// DOM 元素
 const selectBtn = document.getElementById('selectBtn');
 const cityImage = document.getElementById('cityImage');
 const cityName = document.getElementById('cityName');
+const menuBtn = document.getElementById('menuBtn');
+const cityList = document.getElementById('cityList');
 
 let isRolling = false;
 let rollInterval;
@@ -66,19 +68,15 @@ function getRandomCity() {
     return cities[index];
 }
 
-// 更新图片函数，简化为只处理 jpg
+// 更新图片函数
 function updateCityImages(city) {
-    // 如果已经开始过选择，且传入的是默认城市，则随机选择一个城市
     if (isRolling && city === defaultCity) {
         city = getRandomCity();
     }
     
-    // 创建临时图片对象来预加载
     const tempImg = new Image();
     
-    // 更新DOM的函数
     const updateDOM = () => {
-        // 再次确认不会显示默认城市
         if (isRolling && city === defaultCity) {
             city = getRandomCity();
         }
@@ -86,10 +84,8 @@ function updateCityImages(city) {
         cityName.textContent = city.name;
     };
 
-    // 处理图片加载
     tempImg.onload = updateDOM;
     tempImg.onerror = () => {
-        // 如果图片加载失败，尝试加载另一个城市的图片
         if (isRolling) {
             const newCity = getRandomCity();
             updateCityImages(newCity);
@@ -98,10 +94,7 @@ function updateCityImages(city) {
         }
     };
     
-    // 开始加载图片
     tempImg.src = city.image;
-    
-    // 设置超时，防止图片加载时间过长
     setTimeout(updateDOM, 100);
 }
 
@@ -113,13 +106,11 @@ function startRolling() {
     selectBtn.disabled = true;
     selectBtn.textContent = '选择中...';
     
-    // 预加载所有城市图片
     cities.forEach(city => {
         const img = new Image();
         img.src = city.image;
     });
     
-    // 使用 Promise 来处理每次更新
     const roll = async () => {
         const randomCity = getRandomCity();
         await new Promise(resolve => {
@@ -128,10 +119,8 @@ function startRolling() {
         });
     };
     
-    // 立即开始第一次滚动
     roll();
     
-    // 设置一个随机的滚动次数（10-15次）
     const totalRolls = 10 + Math.floor(Math.random() * 6);
     let currentRoll = 0;
     
@@ -152,7 +141,6 @@ function stopRolling() {
     selectBtn.disabled = false;
     selectBtn.textContent = '开始选择';
     
-    // 最终选择
     const finalCity = getRandomCity();
     updateCityImages(finalCity);
 }
@@ -176,4 +164,9 @@ cityImage.addEventListener('error', function() {
 // 页面加载时显示默认状态
 document.addEventListener('DOMContentLoaded', () => {
     updateCityImages(defaultCity);
+});
+
+// 菜单按钮点击事件
+menuBtn.addEventListener('click', () => {
+    cityList.classList.toggle('open');
 }); 

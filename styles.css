@@ -36,8 +36,8 @@ body {
 
 .city-image {
     width: 100%;
-    max-width: 500px;
-    height: 300px;
+    max-width: 600px;
+    height: 400px;
     overflow: hidden;
     border-radius: 10px;
 }
@@ -80,6 +80,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: transform 0.3s ease;
+    z-index: 999;
+    overflow-y: auto;
 }
 
 .city-list h2 {
@@ -126,6 +129,23 @@ body {
         flex: none;
         width: 100%;
     }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .city-list {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100%;
+        transform: translateX(100%);
+    }
+
+    .city-list.open {
+        transform: translateX(0);
+    }
 }
 
 /* 添加主标题样式 */
@@ -134,4 +154,41 @@ body {
     color: #333;
     margin-bottom: 30px;
     font-size: 28px;
+}
+
+/* 添加菜单按钮样式 */
+/* .menu-btn {
+    display: none;
+    margin-left: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu-btn:hover {
+    background-color: #45a049;
+} */
+
+/* 侧边栏样式 */
+.city-list {
+    flex: 3;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+    z-index: 999;
+    overflow-y: auto;
+}
+
+.city-list.open {
+    transform: translateX(-100%);
 } 
